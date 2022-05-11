@@ -19,13 +19,13 @@ public class ProfesionController {
     @PostMapping("/createProfesion")
     public ResponseEntity<Object> createProfesion(@RequestBody Profesion p){
         profesionService.save(p);
-        return new ResponseEntity<>("Successfully created with Id = "+ p.getId(), HttpStatus.CREATED);
+        return new ResponseEntity<>("Successfully created with Id = "+ p.getIdentificador(), HttpStatus.CREATED);
     }
     @PutMapping("/editProfesion")
     public ResponseEntity<Object> editProfesion(@RequestBody Profesion p){
-        if(profesionService.exists(p.getId())){
+        if(profesionService.exists(p.getIdentificador())){
             profesionService.save(p);
-            return new ResponseEntity<>("Successfully updated with Id = "+ p.getId(),HttpStatus.ACCEPTED);
+            return new ResponseEntity<>("Successfully updated with Id = "+ p.getIdentificador(),HttpStatus.ACCEPTED);
         }else{
             throw new ProfesionNotFoundException();
         }

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Document(value = "Estudios")
 public class Estudios {
     @Id
-    private final Integer id;
+    private final Integer identificador;
     private final Integer cc_per;
     private final LocalDateTime date;
     private final String universidad;

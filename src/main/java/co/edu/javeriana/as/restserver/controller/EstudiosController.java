@@ -26,9 +26,9 @@ public class EstudiosController {
     @PostMapping("/createEstudios")
     public ResponseEntity<Object> createPersonas(@RequestBody Estudios est) {
         if(perS.exists(est.getCc_per())){
-            if(profesionService.exists(est.getId())) {
+            if(profesionService.exists(est.getIdentificador())) {
                 estudiosService.save(est);
-                return new ResponseEntity<>("Successfully created with Id = " + est.getId(), HttpStatus.CREATED);
+                return new ResponseEntity<>("Successfully created with Id = " + est.getIdentificador(), HttpStatus.CREATED);
             }else{
                 throw new ProfesionNotFoundException();
             }
@@ -39,9 +39,9 @@ public class EstudiosController {
     }
     @PutMapping("/editEstudios")
     public ResponseEntity<String> editPersonas(@RequestBody Estudios est){
-        if(estudiosService.exists(est.getId())){
+        if(estudiosService.exists(est.getIdentificador())){
             estudiosService.save(est);
-            return new ResponseEntity<>("Successfully updated Person with id" + est.getId(),HttpStatus.ACCEPTED);
+            return new ResponseEntity<>("Successfully updated Person with id" + est.getIdentificador(),HttpStatus.ACCEPTED);
         }else{
             throw new EstudioNotFoundException();
         }
