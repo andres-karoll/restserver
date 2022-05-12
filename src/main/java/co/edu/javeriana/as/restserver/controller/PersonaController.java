@@ -36,9 +36,9 @@ public class PersonaController  {
     public ResponseEntity<Object> deletePersonas(@PathVariable Integer id){
         if(perS.exists(id)){
             perS.deleteById(id);
-            return new ResponseEntity<>("Successfully deleted Person with id" + id,HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(true,HttpStatus.ACCEPTED);
         }else {
-            throw new PersonaNotFoundException();
+            return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
         }
     }
 
