@@ -23,7 +23,7 @@ public class PersonaController  {
         perS.save(per);
         return new ResponseEntity<>(per,HttpStatus.CREATED);
     }
-    @PutMapping("/editPersonas")
+    @PutMapping(value = "/editPersonas",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> editPersonas(@RequestBody Persona per){
         if(perS.exists(per.getCc())){
             perS.save(per);
@@ -32,7 +32,7 @@ public class PersonaController  {
             throw new PersonaNotFoundException();
         }
     }
-    @DeleteMapping("/deletePersonas/{id}")
+    @DeleteMapping(value = "/deletePersonas/{id}",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> deletePersonas(@PathVariable Integer id){
         if(perS.exists(id)){
             perS.deleteById(id);
@@ -42,19 +42,19 @@ public class PersonaController  {
         }
     }
 
-    @GetMapping("/all")
-    public List<Persona> findAll(){
-        return perS.findAll();
+    @GetMapping(value = "/all",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Persona>> findAll(){
+        return  new ResponseEntity<>(perS.findAll(),HttpStatus.ACCEPTED);
     }
     @GetMapping("/find/{id}")
-    public Persona findById(@PathVariable Integer id){
+    public ResponseEntity<Object>  findById(@PathVariable Integer id){
         if(perS.exists(id)){
-            return perS.findById(id).get();
+            return new ResponseEntity<>(perS.findById(id),HttpStatus.ACCEPTED);
         }else{
             throw new PersonaNotFoundException();
         }
     }
-    @GetMapping("/count")
+    @GetMapping(value = "/count",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> countPersonas(){
         return new ResponseEntity<>("Number of persona in database is: " +perS.count(),HttpStatus.OK);
     }
