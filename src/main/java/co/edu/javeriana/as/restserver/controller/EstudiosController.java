@@ -11,6 +11,7 @@ import co.edu.javeriana.as.restserver.service.PersonaService;
 import co.edu.javeriana.as.restserver.service.ProfesionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class EstudiosController {
     private final EstudiosService estudiosService;
     private final PersonaService perS;
     private final ProfesionService profesionService;
-    @PostMapping("/createEstudios")
+    @PostMapping(value = "/createEstudios",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> createPersonas(@RequestBody Estudios est) {
         if(perS.exists(est.getCc_per())){
             if(profesionService.exists(est.getIdentificador())) {

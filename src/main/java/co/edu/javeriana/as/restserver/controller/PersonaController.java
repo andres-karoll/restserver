@@ -5,6 +5,7 @@ import co.edu.javeriana.as.restserver.exception.PersonaNotFoundException;
 import co.edu.javeriana.as.restserver.service.PersonaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,10 +18,10 @@ public class PersonaController  {
     private final PersonaService perS;
 
 
-    @PostMapping("/createPersonas")
+    @PostMapping(value = "/createPersonas",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> createPersonas(@RequestBody Persona per) {
         perS.save(per);
-        return new ResponseEntity<>("Successfully created with Id = "+ per.getCc(),HttpStatus.CREATED);
+        return new ResponseEntity<>(per,HttpStatus.CREATED);
     }
     @PutMapping("/editPersonas")
     public ResponseEntity<String> editPersonas(@RequestBody Persona per){
