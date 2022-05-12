@@ -41,6 +41,7 @@ public class PersonaController  {
             throw new PersonaNotFoundException();
         }
     }
+
     @GetMapping("/all")
     public List<Persona> findAll(){
         return perS.findAll();

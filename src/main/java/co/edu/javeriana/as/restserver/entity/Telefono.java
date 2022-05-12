@@ -5,11 +5,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document(value = "Profesion")
-public class Profesion {
+@Document(value = "Telefono")
+public class Telefono {
     @Id
-    private final Integer identificador;
-    private final String nombre;
-    private final String descripcion;
+    private final Integer duenio;
+    private final String numero;
+    private final String operador;
+
 
 }
