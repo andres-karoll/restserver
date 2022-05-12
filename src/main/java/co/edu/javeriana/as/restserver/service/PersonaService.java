@@ -26,5 +26,6 @@ public class PersonaService{
     public Boolean exists(Integer id){
         return personaRep.existsById(id);
     }
+    public Long count(){return personaRep.count();}
 }
 

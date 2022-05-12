@@ -52,5 +52,9 @@ public class PersonaController  {
             throw new PersonaNotFoundException();
         }
     }
+    @GetMapping("/count")
+    public ResponseEntity<Object> countPersonas(){
+        return new ResponseEntity<>("Number of persona in database is: " +perS.count(),HttpStatus.OK);
+    }
 
 }
