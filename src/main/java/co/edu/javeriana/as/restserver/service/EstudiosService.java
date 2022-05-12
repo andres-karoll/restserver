@@ -12,19 +12,24 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class EstudiosService {
     private final EstudiosRepository estudiosRepository;
-    public void save(Estudios e){
+
+    public void save(Estudios e) {
         estudiosRepository.save(e);
     }
-    public List<Estudios> findAll(){
+
+    public List<Estudios> findAll() {
         return estudiosRepository.findAll();
     }
-    public Optional<Estudios> findById(Integer id){
+
+    public Optional<Estudios> findById(Integer id) {
         return estudiosRepository.findById(id);
     }
-    public void deleteById(Integer id){
+
+    public void deleteById(Integer id) {
         estudiosRepository.deleteById(id);
     }
-    public Boolean exists(Integer id){
+
+    public Boolean exists(Integer id) {
         return estudiosRepository.existsById(id);
     }
 

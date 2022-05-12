@@ -13,20 +13,27 @@ import java.util.Optional;
 public class ProfesionService {
     private final ProfesionRepository profesionRepository;
 
-    public void save(Profesion profesion){
+    public void save(Profesion profesion) {
         profesionRepository.save(profesion);
     }
-    public List<Profesion> findAll(){
+
+    public List<Profesion> findAll() {
         return profesionRepository.findAll();
     }
-    public Optional<Profesion> findById(Integer id){
+
+    public Optional<Profesion> findById(Integer id) {
         return profesionRepository.findById(id);
     }
-    public void deleteById(Integer id){
+
+    public void deleteById(Integer id) {
         profesionRepository.deleteById(id);
     }
-    public Boolean exists(Integer id){
+
+    public Boolean exists(Integer id) {
         return profesionRepository.existsById(id);
     }
-    public Long count(){return profesionRepository.count();}
+
+    public Long count() {
+        return profesionRepository.count();
+    }
 }

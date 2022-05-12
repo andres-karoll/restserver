@@ -5,4 +5,5 @@ public class PersonaNotFoundException extends RuntimeException{
     public PersonaNotFoundException(){
         super("Persona not found");
     }
+
 }

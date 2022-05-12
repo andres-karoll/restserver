@@ -5,4 +5,5 @@ public class TelefonoNotFoundException extends RuntimeException{
     public TelefonoNotFoundException(){
         super("Telefono not found");
     }
+
 }

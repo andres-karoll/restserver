@@ -18,44 +18,49 @@ import java.util.List;
 public class TelefonoController {
     private final TelefonoService telefonoService;
     private final PersonaService personaService;
+
     @PostMapping("/createTelefono")
-    public ResponseEntity<Object> createTelefono(@RequestBody Telefono t){
-        if(personaService.exists(t.getDuenio())){
+    public ResponseEntity<Object> createTelefono(@RequestBody Telefono t) {
+        if (personaService.exists(t.getDuenio())) {
             telefonoService.save(t);
-            return new ResponseEntity<>("Successfully created with Id = "+ t.getNumero(), HttpStatus.CREATED);
-        }else{
+            return new ResponseEntity<>("Successfully created with Id = " + t.getNumero(), HttpStatus.CREATED);
+        } else {
             throw new PersonaNotFoundException();
         }
     }
+
     @PutMapping("/editTelefono")
-    public ResponseEntity<Object> editTelefono(@RequestBody Telefono t){
-        if(personaService.exists(t.getDuenio())){
+    public ResponseEntity<Object> editTelefono(@RequestBody Telefono t) {
+        if (personaService.exists(t.getDuenio())) {
             telefonoService.save(t);
-            return new ResponseEntity<>("Successfully created with Id = "+ t.getNumero(), HttpStatus.ACCEPTED);
-        }else{
+            return new ResponseEntity<>("Successfully created with Id = " + t.getNumero(), HttpStatus.ACCEPTED);
+        } else {
             throw new TelefonoNotFoundException();
         }
     }
+
     @DeleteMapping("deleteTelefono/{id}")
-    public ResponseEntity<Object> deletePersonas(@PathVariable Integer id){
-        if(telefonoService.exists(id)){
+    public ResponseEntity<Object> deletePersonas(@PathVariable Integer id) {
+        if (telefonoService.exists(id)) {
             telefonoService.deleteById(id);
-            return new ResponseEntity<>("Successfully deleted with Id = "+ id, HttpStatus.ACCEPTED);
-        }else {
+            return new ResponseEntity<>("Successfully deleted with Id = " + id, HttpStatus.ACCEPTED);
+        } else {
             throw new TelefonoNotFoundException();
         }
     }
+
     @GetMapping("/all")
-    public ResponseEntity<List<Telefono>> findAll(){
+    public ResponseEntity<List<Telefono>> findAll() {
         return new ResponseEntity<>(telefonoService.findAll(), HttpStatus.ACCEPTED);
     }
+
     @GetMapping("/find/{id}")
-    public ResponseEntity<Telefono> findById(@PathVariable Integer id){
-       if(telefonoService.exists(id)){
-           return new ResponseEntity<>(telefonoService.findById(id).get(), HttpStatus.ACCEPTED);
-       }else{
-           throw new TelefonoNotFoundException();
-       }
+    public ResponseEntity<Telefono> findById(@PathVariable Integer id) {
+        if (telefonoService.exists(id)) {
+            return new ResponseEntity<>(telefonoService.findById(id).get(), HttpStatus.ACCEPTED);
+        } else {
+            throw new TelefonoNotFoundException();
+        }
     }
 
 

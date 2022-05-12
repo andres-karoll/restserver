@@ -12,19 +12,24 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TelefonoService {
     private final TelefonoRepository telefonoRepository;
-    public void save(Telefono t){
+
+    public void save(Telefono t) {
         telefonoRepository.save(t);
     }
-    public List<Telefono> findAll(){
+
+    public List<Telefono> findAll() {
         return telefonoRepository.findAll();
     }
-    public Optional<Telefono> findById(Integer id){
+
+    public Optional<Telefono> findById(Integer id) {
         return telefonoRepository.findById(id);
     }
-    public void deleteById(Integer id){
+
+    public void deleteById(Integer id) {
         telefonoRepository.deleteById(id);
     }
-    public Boolean exists(Integer id){
+
+    public Boolean exists(Integer id) {
         return telefonoRepository.existsById(id);
     }
 

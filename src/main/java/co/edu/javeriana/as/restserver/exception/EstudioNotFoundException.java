@@ -5,4 +5,5 @@ public class EstudioNotFoundException extends RuntimeException{
     public EstudioNotFoundException(){
         super("Estudio not found");
     }
+
 }

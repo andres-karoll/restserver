@@ -12,4 +12,5 @@ public class Telefono {
     private final String numero;
     private final String operador;
 
+
 }

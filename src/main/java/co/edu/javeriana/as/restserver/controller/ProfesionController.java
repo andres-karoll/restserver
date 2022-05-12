@@ -17,37 +17,41 @@ public class ProfesionController {
     private final ProfesionService profesionService;
 
     @PostMapping("/createProfesion")
-    public ResponseEntity<Object> createProfesion(@RequestBody Profesion p){
+    public ResponseEntity<Object> createProfesion(@RequestBody Profesion p) {
         profesionService.save(p);
-        return new ResponseEntity<>("Successfully created with Id = "+ p.getIdentificador(), HttpStatus.CREATED);
+        return new ResponseEntity<>("Successfully created with Id = " + p.getIdentificador(), HttpStatus.CREATED);
     }
+
     @PutMapping("/editProfesion")
-    public ResponseEntity<Object> editProfesion(@RequestBody Profesion p){
-        if(profesionService.exists(p.getIdentificador())){
+    public ResponseEntity<Object> editProfesion(@RequestBody Profesion p) {
+        if (profesionService.exists(p.getIdentificador())) {
             profesionService.save(p);
-            return new ResponseEntity<>("Successfully updated with Id = "+ p.getIdentificador(),HttpStatus.ACCEPTED);
-        }else{
+            return new ResponseEntity<>("Successfully updated with Id = " + p.getIdentificador(), HttpStatus.ACCEPTED);
+        } else {
             throw new ProfesionNotFoundException();
         }
     }
+
     @DeleteMapping("/deleteProfesion")
-    public ResponseEntity<Object> deleteProfesion(@PathVariable Integer id){
-        if(profesionService.exists(id)){
+    public ResponseEntity<Object> deleteProfesion(@PathVariable Integer id) {
+        if (profesionService.exists(id)) {
             profesionService.deleteById(id);
-            return new ResponseEntity<>("Successfully deleted Profession with id" + id,HttpStatus.ACCEPTED);
-        }else{
+            return new ResponseEntity<>("Successfully deleted Profession with id" + id, HttpStatus.ACCEPTED);
+        } else {
             throw new ProfesionNotFoundException();
         }
     }
+
     @GetMapping("/all")
-    public ResponseEntity<List<Profesion>> findAllProfesion(){
-        return new ResponseEntity<>(profesionService.findAll(),HttpStatus.OK);
+    public ResponseEntity<List<Profesion>> findAllProfesion() {
+        return new ResponseEntity<>(profesionService.findAll(), HttpStatus.OK);
     }
+
     @GetMapping("/find/{id}")
-    public ResponseEntity<Profesion> findProfesionById(@PathVariable Integer id){
-        if(profesionService.exists(id)){
-            return new ResponseEntity<>(profesionService.findById(id).get(),HttpStatus.ACCEPTED);
-        }else{
+    public ResponseEntity<Profesion> findProfesionById(@PathVariable Integer id) {
+        if (profesionService.exists(id)) {
+            return new ResponseEntity<>(profesionService.findById(id).get(), HttpStatus.ACCEPTED);
+        } else {
             throw new ProfesionNotFoundException();
         }
     }

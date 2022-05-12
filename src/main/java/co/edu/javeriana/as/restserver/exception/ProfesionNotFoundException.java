@@ -5,4 +5,5 @@ public class ProfesionNotFoundException extends RuntimeException{
     public ProfesionNotFoundException(){
         super("Profesion not found");
     }
+
 }
