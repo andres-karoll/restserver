@@ -11,5 +11,4 @@ public class Profesion {
     private final Integer identificador;
     private final String nombre;
     private final String descripcion;
-
 }

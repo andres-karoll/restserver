@@ -1,8 +1,6 @@
 package co.edu.javeriana.as.restserver.service;
 
-
 import co.edu.javeriana.as.restserver.entity.Profesion;
-
 import co.edu.javeriana.as.restserver.repository.ProfesionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,4 +28,5 @@ public class ProfesionService {
     public Boolean exists(Integer id){
         return profesionRepository.existsById(id);
     }
+    public Long count(){return profesionRepository.count();}
 }

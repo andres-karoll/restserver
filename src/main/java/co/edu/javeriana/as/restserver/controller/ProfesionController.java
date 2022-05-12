@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/profesion")
 @RequiredArgsConstructor
 public class ProfesionController {
-    ProfesionService profesionService;
+    private final ProfesionService profesionService;
 
     @PostMapping("/createProfesion")
     public ResponseEntity<Object> createProfesion(@RequestBody Profesion p){
