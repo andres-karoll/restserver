@@ -61,7 +61,7 @@ public class EstudiosController {
     public List<Estudios> findAll(){
         return estudiosService.findAll();
     }
-    @GetMapping("/find/{id}")
+    @GetMapping("/find/{id}/{cc}")
     public Persona findById(@PathVariable Integer id){
         if(estudiosService.exists(id)){
             return perS.findById(id).get();

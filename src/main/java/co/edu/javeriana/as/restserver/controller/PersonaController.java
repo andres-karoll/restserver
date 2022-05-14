@@ -17,7 +17,7 @@ import java.util.List;
 public class PersonaController  {
     private final PersonaService perS;
 
-
+    @ResponseBody
     @PostMapping(value = "/createPersonas",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> createPersonas(@RequestBody Persona per) {
         perS.save(per);
@@ -56,7 +56,7 @@ public class PersonaController  {
     }
     @GetMapping(value = "/count",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> countPersonas(){
-        return new ResponseEntity<>("Number of persona in database is: " +perS.count(),HttpStatus.OK);
+        return new ResponseEntity<>(perS.count(),HttpStatus.OK);
     }
 
 }
