@@ -64,7 +64,10 @@ public class EstudiosController {
     @GetMapping("/find/{id}/{cc}")
     public Persona findById(@PathVariable Integer id){
         if(estudiosService.exists(id)){
-            return perS.findById(id).get();
+            if(!perS.findById(id).get().getCc().equals(null))
+            {
+              return perS.findById(id).get();
+            }
         }else{
             throw new EstudioNotFoundException();
         }

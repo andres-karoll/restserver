@@ -32,7 +32,7 @@ public class ProfesionController {
         }
     }
 
-    @DeleteMapping("/deleteProfesion")
+    @DeleteMapping("/deleteProfesion/{id}")
     public ResponseEntity<Object> deleteProfesion(@PathVariable Integer id) {
         if (profesionService.exists(id)) {
             profesionService.deleteById(id);
